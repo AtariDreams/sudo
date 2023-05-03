@@ -106,17 +106,17 @@ PVS_CFG = $(top_builddir)/PVS-Studio.cfg
 PVS_IGNORE = 'V707,V011,V002,V536,V568'
 PVS_LOG_OPTS = -a 'GA:1,2' -e -t errorfile -d $(PVS_IGNORE)
 
-all: config.status
-	for d in $(SUBDIRS) $(SAMPLES); do \
-	    (cd $$d && exec $(MAKE) $@) && continue; \
-	    exit $$?; \
-	done
+all: config.status $(SUBDIRS) $(SAMPLES)
+$(SUBDIRS):
+		$(MAKE) -C $@
+$(SAMPLES):
+		$(MAKE) -C $@
 
-check check-verbose check-fuzzer fuzz pre-install: config.status
-	for d in $(SUBDIRS) $(SAMPLES); do \
-	    (cd $$d && exec $(MAKE) $@) && continue; \
-	    exit $$?; \
-	done
+.PHONY: all $(SUBDIRS)
+
+check check-verbose check-fuzzer fuzz pre-install: $(SUBDIRS)
+$(SUBDIRS):
+	$(MAKE) -C $@
 
 uncrustify.files: Makefile
 	$(EGREP) '\.[ch]$$' $(top_srcdir)/MANIFEST | $(EGREP) -v '(/zlib/|/(arc4random|arc4random_uniform|chacha_private|charclass|fnmatch|getaddrinfo|getcwd|getdate|getentropy|getopt|getopt_long|glob|gram|inet_ntop|inet_pton|log_server.pb-c|mktemp|pw_dup|reallocarray|mktemp_test|protobuf-c|snprintf|stdbool|strlcat|strlcpy|sudo_queue|toke)\.[ch]$$)'  > uncrustify.files
