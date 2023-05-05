@@ -2034,7 +2034,7 @@ protobuf_c_message_pack_to_buffer(const ProtobufCMessage *message,
  */
 
 static inline int
-int_range_lookup(unsigned n_ranges, const ProtobufCIntRange *ranges, int value)
+int_range_lookup(unsigned n_ranges, const ProtobufCIntRange *ranges, unsigned value)
 {
 	unsigned n;
 	unsigned start;
