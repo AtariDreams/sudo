@@ -1867,10 +1867,10 @@ logsrvd_conf_read(const char *path)
     config = logsrvd_conf_alloc();
 
     if (path != NULL) {
-       if (strlcpy(conf_file, path, sizeof(conf_file)) >= sizeof(conf_file))
+        if (strlcpy(conf_file, path, sizeof(conf_file)) >= sizeof(conf_file))
             errno = ENAMETOOLONG;
-	else
-	    fd = open(conf_file, O_RDONLY);
+        else
+            fd = open(conf_file, O_RDONLY);
     } else {
 	fd = sudo_open_conf_path(_PATH_SUDO_LOGSRVD_CONF, conf_file,
 	    sizeof(conf_file), NULL);
