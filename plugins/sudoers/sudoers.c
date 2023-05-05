@@ -549,7 +549,7 @@ sudoers_check_common(int pwflag)
     /* If the user was not allowed to run the command we are done. */
     if (!ISSET(validated, VALIDATE_SUCCESS)) {
 	/* Note: log_failure() calls audit for us. */
-	if (!log_failure(validated, cmnd_status))
+	if (!log_failure(cmnd_status, validated))
 	    goto done;
 	goto bad;
     }
