@@ -1826,12 +1826,12 @@ get_packed_payload_length(const ProtobufCFieldDescriptor *field,
  */
 static size_t
 pack_buffer_packed_payload(const ProtobufCFieldDescriptor *field,
-			   unsigned count, const void *array,
+			   size_t count, const void *array,
 			   ProtobufCBuffer *buffer)
 {
 	uint8_t scratch[16];
 	size_t rv = 0;
-	unsigned i;
+	size_t i;
 
 	switch (field->type) {
 	case PROTOBUF_C_TYPE_SFIXED32:
@@ -1920,7 +1920,7 @@ no_packing_needed:
 
 static size_t
 repeated_field_pack_to_buffer(const ProtobufCFieldDescriptor *field,
-			      unsigned count, const void *member,
+			      size_t count, const void *member,
 			      ProtobufCBuffer *buffer)
 {
 	char *array = *(char * const *) member;
