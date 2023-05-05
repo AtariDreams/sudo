@@ -90,7 +90,6 @@ initprogname2(const char *name, const char * const * allowed)
     /* Update internal progname if needed. */
     if (name != progname)
 	setprogname(name);
-    return;
 }
 
 void
