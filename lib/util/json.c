@@ -84,7 +84,7 @@ json_new_line(struct json_container *jsonc)
 	    debug_return_bool(false);
     }
     jsonc->buf[jsonc->buflen++] = '\n';
-    while (indent--) {
+    for (; indent; --indent) {
 	jsonc->buf[jsonc->buflen++] = ' ';
     }
     jsonc->buf[jsonc->buflen] = '\0';
