@@ -669,8 +669,8 @@ sudo_ldap_value_cat(char * restrict dst, const char * restrict src, size_t size)
     size_t dlen;
 
     /* Find the end of dst and adjust bytes left but don't go past end */
-    while (n-- != 0 && *d != '\0')
-	d++;
+    while (n != 0 && *d != '\0')
+	d++, n--;
     dlen = (size_t)(d - dst);
     n = size - dlen;
 
