@@ -131,7 +131,7 @@ get_process_ttyname(char *name, size_t namelen)
     }
     errno = ENOENT;
     if (rc != -1) {
-	if ((dev_t)ki_proc->sudo_kp_tdev != (dev_t)-1) {
+	if (ki_proc->sudo_kp_tdev != (dev_t)-1) {
 	    errno = serrno;
 	    ret = sudo_ttyname_dev((dev_t)ki_proc->sudo_kp_tdev, name, namelen);
 	    if (ret == NULL) {
