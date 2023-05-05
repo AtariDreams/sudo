@@ -205,8 +205,8 @@ struct userspec {
     struct member_list users;		/* list of users */
     struct privilege_list privileges;	/* list of privileges */
     struct comment_list comments;	/* optional comments */
-    int line;				/* line number in sudoers */
-    int column;				/* column number in sudoers */
+    unsigned int line;				/* line number in sudoers */
+    unsigned int column;				/* column number in sudoers */
     char *file;				/* name of sudoers file */
 };
 
