@@ -72,7 +72,7 @@ json_expand_buf(struct json_container *jsonc)
 static bool
 json_new_line(struct json_container *jsonc)
 {
-    int indent = jsonc->indent_level;
+    unsigned int indent = jsonc->indent_level;
     debug_decl(json_new_line, SUDO_DEBUG_UTIL);
 
     /* No non-essential white space in minimal mode. */
@@ -84,7 +84,7 @@ json_new_line(struct json_container *jsonc)
 	    debug_return_bool(false);
     }
     jsonc->buf[jsonc->buflen++] = '\n';
-    while (indent--) {
+    for (; indent; --indent) {
 	jsonc->buf[jsonc->buflen++] = ' ';
     }
     jsonc->buf[jsonc->buflen] = '\0';

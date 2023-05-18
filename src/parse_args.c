@@ -704,7 +704,7 @@ display_usage(FILE *fp)
 {
     const char * const **uvecs = sudo_usage;
     const char * const *uvec;
-    int i, indent;
+    size_t i, indent;
 
     /*
      * Use usage vectors appropriate to the progname.

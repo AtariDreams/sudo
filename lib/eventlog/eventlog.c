@@ -361,7 +361,8 @@ send_mail(const struct eventlog *evlog, const char *message)
     struct tm tm;
     time_t now;
     FILE *mail;
-    int fd, len, pfd[2], status;
+    int fd, pfd[2], status;
+    size_t len;
     pid_t pid, rv;
     struct stat sb;
 #if defined(HAVE_NL_LANGINFO) && defined(CODESET)
@@ -559,7 +560,7 @@ json_add_timestamp(struct json_container *jsonc, const char *name,
     const struct timespec *ts, bool format_timestamp)
 {
     struct json_value json_value;
-    int len;
+    size_t len;
     debug_decl(json_add_timestamp, SUDO_DEBUG_PLUGIN);
 
     if (!sudo_json_open_object(jsonc, name))

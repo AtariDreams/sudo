@@ -128,10 +128,10 @@ deliver_signal(struct monitor_closure *mc, int signo, bool from_parent)
  * Send status to parent over socketpair.
  * Return value is the same as send(2).
  */
-static int
+static ssize_t
 send_status(int fd, struct command_status *cstat)
 {
-    int n = -1;
+    ssize_t n = -1;
     debug_decl(send_status, SUDO_DEBUG_EXEC);
 
     if (cstat->type != CMD_INVALID) {
