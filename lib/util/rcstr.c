@@ -34,7 +34,7 @@
 /* Trivial reference-counted strings. */
 struct rcstr {
     int refcnt;
-    char str[1];	/* actually bigger */
+    char str[];	/* actually bigger */
 };
 
 /*

@@ -46,7 +46,7 @@ static struct rbtree *canon_cache;
 struct cache_item {
     unsigned int refcnt;
     char *pathname;
-    char resolved[1];	/* actually bigger */
+    char resolved[];	/* actually bigger */
 };
 
 /*
