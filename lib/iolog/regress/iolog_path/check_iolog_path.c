@@ -279,7 +279,8 @@ main(int argc, char *argv[])
 	default:
 	    sudo_fatalx("internal error, invalid state %d", state);
 	}
-	state = (state + 1) % MAX_STATE;
+        if (++state == MAX_STATE)
+        state = 0;
     }
     free(dir_in);
     free(dir_out);
